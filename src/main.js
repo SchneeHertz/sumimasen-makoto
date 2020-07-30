@@ -7,6 +7,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import _ from 'lodash'
 import axios from 'axios'
 
+import { OverlayScrollbarsPlugin } from 'overlayscrollbars-vue'
+import 'overlayscrollbars/css/OverlayScrollbars.css'  
+Vue.use(OverlayScrollbarsPlugin)
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)

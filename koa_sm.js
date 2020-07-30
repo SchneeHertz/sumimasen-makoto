@@ -20,7 +20,6 @@ app.use(koaBodyparser({
 
 app.use(serve(path.join(__dirname,  './dist')))
 
-// router.use('/data', jwt({secret: config.jwt_seed}), data.routes())
 router.use('/data', routerFile.routes())
 app.use(router.routes())
 

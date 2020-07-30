@@ -10,13 +10,36 @@ db._.mixin(LodashId)
 _.mixin(LodashId)
 
 db.defaults({
-  gameData: {}
+  gameData: []
 }).write()
 
-const getGameData = ()=>{
-  return db.get('gameData').value()
+const getBattleList = () => {
+  return db.get('gameData').map(e=>_.pick(e, ['id', 'name'])).value()
+}
+
+const getGameData = (id) => {
+  return db.get('gameData').find({id: id}).value()
+}
+
+const addMap = (battleId, map) => {
+  db.get('gameData')
+  .find({id: battleId})
+  .get('bossMap')
+  .push(map)
+  .write()
+}
+
+const removeMap = (battleId, mapId) => {
+  db.get('gameData')
+  .find({id: battleId})
+  .get('bossMap')
+  .remove({id: mapId})
+  .write()
 }
 
 module.exports = {
-  getGameData
+  getBattleList,
+  getGameData,
+  addMap,
+  removeMap
 }
