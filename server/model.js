@@ -22,11 +22,26 @@ const getGameData = (id) => {
 }
 
 const addMap = (battleId, map) => {
-  db.get('gameData')
+  let findExist = db.get('gameData')
   .find({id: battleId})
   .get('bossMap')
-  .push(map)
-  .write()
+  .find({id: map.id})
+  .value()
+
+  if (findExist) {
+    db.get('gameData')
+    .find({id: battleId})
+    .get('bossMap')
+    .find({id: map.id})
+    .assign(map)
+    .write()
+  } else {
+    db.get('gameData')
+    .find({id: battleId})
+    .get('bossMap')
+    .push(map)
+    .write()
+  }
 }
 
 const removeMap = (battleId, mapId) => {

@@ -57,6 +57,7 @@
                       <template #header>
                         <span>{{map.name}}</span>
                         <el-button style="float: right; padding: 3px 0; color: red" type="text" @click="removeMap(map.id)">删除</el-button>
+                        <el-button style="float: right; padding: 3px 0; margin-right: 10px; color: red" type="text" @click="editMap(map.id)">编辑</el-button>
                       </template>
                       <div class="character-require">
                         <div
@@ -94,13 +95,15 @@
           title="添加轴"
           :visible.sync="dialogVisible"
           width="90%"
+          :close-on-click-modal="false"
+          :close-on-press-escape="false"
           class="edit-dialog"
         >
           <el-input
             v-model="dialogData.name"
             class="card-line"
           >
-            <template #prepend>简称</template>
+            <template #prepend>说明</template>
           </el-input>
           <el-input
             v-model="dialogData.verify"
@@ -113,7 +116,7 @@
             :key="index"
           >
             <el-input
-              v-model="character.name"
+              v-model="character.character"
               class="card-line card-line-character"
               placeholder="角色"
             ></el-input>
@@ -145,10 +148,31 @@
           </div>
           <div class="card-line">
             <el-button type="primary" size="mini" @click="addStep">增加一步</el-button>
+            <el-button type="danger" size="mini" @click="removeStep">删除最后一步</el-button>
+            <el-button type="primary" size="mini" @click="importData">快速导入</el-button>
           </div>
           <span slot="footer" class="dialog-footer">
             <el-button type="info" @click="dialogVisible = false">取消</el-button>
             <el-button type="success" @click="confirmAdd">确定</el-button>
+          </span>
+        </el-dialog>
+        <el-dialog
+          title="快速导入"
+          :visible.sync="dialogVisibleImport"
+          width="90%"
+          :close-on-click-modal="false"
+          :close-on-press-escape="false"
+          append-to-body
+          class="import-dialog"
+        >
+          <el-input type="textarea"
+            :autosize="{ minRows: 6, maxRows: 10}"
+            v-model="importText"
+            placeholder="一步一行，时间点和说明用空格隔开"
+          ></el-input>    
+          <span slot="footer" class="dialog-footer">
+            <el-button type="info" @click="dialogVisibleImport = false">取消</el-button>
+            <el-button type="success" @click="confirmImport">确定</el-button>
           </span>
         </el-dialog>
       </el-row>
@@ -174,7 +198,9 @@ export default {
       selectBossName:undefined,
       selectRound: "1",
       dialogVisible: false,
-      dialogData: {}
+      dialogData: {},
+      dialogVisibleImport: false,
+      importText: ''
     }
   },
   computed: {
@@ -233,12 +259,40 @@ export default {
       this.dialogData = {
         id: _id(),
         require: [{}, {}, {}, {}, {}],
-        map: [{}]
+        map: []
       }
+      this.dialogVisible = true
+    },
+    editMap (id) {
+      this.dialogData = _.find(this.bossMap, {id: id})
       this.dialogVisible = true
     },
     addStep () {
       this.dialogData.map.push({})
+    },
+    removeStep () {
+      this.dialogData.map.splice(this.dialogData.map.length - 1, 1)
+    },
+    importData () {
+      this.importText = ''
+      this.dialogVisibleImport = true
+    },
+    confirmImport () {
+      let stepList = this.importText.split('\n')
+      _.forIn(stepList, step=>{
+        let spaceAt = step.search(/\s/)
+        if (spaceAt != -1) {
+          this.dialogData.map.push({
+            time: step.slice(0, spaceAt),
+            remark: step.slice(spaceAt, step.length)
+          })
+        } else {
+          this.dialogData.map.push({
+            remark: step
+          })
+        }
+      })
+      this.dialogVisibleImport = false
     },
     confirmAdd () {
       this.$http.post('/data/addMap', {
@@ -252,11 +306,16 @@ export default {
       })
       .then((res)=>{
         if (res.data.success) {
-          this.gameData.bossMap.push({
-            bossName: this.selectBossName,
-            round: this.selectRound,
-            ..._.omit(this.dialogData, 'verify')
-          })
+          let findExist = _.find(this.gameData.bossMap, {id: this.dialogData.id})
+          if (findExist) {
+            _.assign(findExist, _.omit(this.dialogData, 'verify'))
+          } else {
+            this.gameData.bossMap.push({
+              bossName: this.selectBossName,
+              round: this.selectRound,
+              ..._.omit(this.dialogData, 'verify')
+            })
+          }
           this.dialogVisible = false
         } else {
           this.$message({type: 'warning', message: res.data.result, showClose: true})
