@@ -2,7 +2,7 @@
 node_modules
 /dist
 /server/data.json
-config.js
+/config.js
 
 # local env files
 .env.local
