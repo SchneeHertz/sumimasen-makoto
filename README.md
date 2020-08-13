@@ -1,5 +1,7 @@
 # sumimasen-makoto
 
+公主连结 S1咸鱼公会 内部用 公会战 轴收集与展示网站  
+
 ## Project setup
 ```
 npm install
