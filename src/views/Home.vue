@@ -71,8 +71,8 @@
                       </div>
                       <div class="map-detail">
                           <div
-                            v-for="step in map.map"
-                            :key="step.time"
+                            v-for="(step, index) in map.map"
+                            :key="step.time + index"
                             class="map-step"
                           >
                             <span style="display: inline-block; min-width: 3.5em">{{step.time}}</span>
@@ -274,7 +274,7 @@ export default {
       this.dialogData.map.splice(this.dialogData.map.length - 1, 1)
     },
     importData () {
-      this.importText = this.dialogData.map.map(step=>step.time ? step.time : ' ' + ' ' + step.remark ? step.remark : '').join('\n')
+      this.importText = this.dialogData.map.map(step=>`${step.time ? step.time : ':'} ${step.remark ? step.remark : ''}`).join('\n')
       this.dialogVisibleImport = true
     },
     confirmImport () {
