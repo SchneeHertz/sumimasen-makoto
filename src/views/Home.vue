@@ -274,11 +274,12 @@ export default {
       this.dialogData.map.splice(this.dialogData.map.length - 1, 1)
     },
     importData () {
-      this.importText = ''
+      this.importText = this.dialogData.map.map(step=>step.time ? step.time : ' ' + ' ' + step.remark ? step.remark : '').join('\n')
       this.dialogVisibleImport = true
     },
     confirmImport () {
       let stepList = this.importText.split('\n')
+      this.dialogData.map = []
       _.forIn(stepList, step=>{
         let spaceAt = step.search(/\s/)
         if (spaceAt != -1) {
