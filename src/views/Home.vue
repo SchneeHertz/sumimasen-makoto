@@ -64,8 +64,8 @@
                           v-for="(character, index) in map.require"
                           :key="index"
                         >
-                        <span style="display: inline-block; min-width: 3.5em">{{character.character}}</span>
-                        <span>({{character.rank}})</span>
+                        <span style="display: inline-block; min-width: 4em">{{character.character}}</span>
+                        <span style="display: inline-block; min-width: 4em">({{character.rank}})</span>
                         <el-rate style="display: inline-block" v-model="character.star" disabled></el-rate>
                         </div>
                       </div>
