@@ -11,6 +11,7 @@ copt /template/data.json to /server , modify json data
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+node koa_sm.js
 ```
 
 ### Compiles and minifies for production
