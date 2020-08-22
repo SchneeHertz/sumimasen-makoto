@@ -3,6 +3,7 @@
     <el-main>
       <el-row>
         <el-col :xs="24" :lg="6" class="aside">
+          <el-tag class="top-tip">S1咸鱼 公会内部使用(小心烟雾弹)</el-tag>
           <NameFormItem
             prependWidth="60px"
             class="battle-select"
@@ -108,6 +109,7 @@
           <el-input
             v-model="dialogData.verify"
             class="card-line"
+            placeholder="验证码找副会长要"
           >
             <template #prepend>验证码</template>
           </el-input>
@@ -330,6 +332,9 @@ export default {
 .el-main
   padding: 0
   .aside
+    text-align: center
+    .top-tip
+      margin: 6px 0 4px
     .battle-select
       margin: 1% 8%
 .el-card.boss-select
