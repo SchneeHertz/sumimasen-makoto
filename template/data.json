@@ -1,0 +1,147 @@
+{
+  "gameData": [
+    {
+      "id": "fsdbucasn",
+      "name": "juxie",
+      "startTime": "2020-07-28",
+      "endTime": "2020-08-02",
+      "bossData": [
+        {
+          "id": "boss1",
+          "name": "双足飞龙",
+          "data": [
+            {
+              "round": "1",
+              "HP": 6000000
+            },
+            {
+              "round": "2",
+              "HP": 6000000
+            }
+          ]
+        },
+        {
+          "id": "boss2",
+          "name": "野性狮鹫",
+          "data": [
+            {
+              "round": "1",
+              "HP": 8000000
+            },
+            {
+              "round": "2",
+              "HP": 8000000
+            }
+          ]
+        },
+        {
+          "id": "boss3",
+          "name": "兽人头目",
+          "data": [
+            {
+              "round": "1",
+              "HP": 10000000
+            },
+            {
+              "round": "2",
+              "HP": 10000000
+            }
+          ]
+        },
+        {
+          "id": "boss4",
+          "name": "独角兽",
+          "data": [
+            {
+              "round": "1",
+              "HP": 12000000
+            },
+            {
+              "round": "2",
+              "HP": 12000000
+            }
+          ]
+        },
+        {
+          "id": "boss5",
+          "name": "巨钳魔蟹",
+          "data": [
+            {
+              "round": "1",
+              "HP": 20000000
+            },
+            {
+              "round": "2",
+              "HP": 20000000
+            }
+          ]
+        }
+      ],
+      "bossMap": [
+        {
+          "id": "A1Map1",
+          "name": "轴1",
+          "round": "1",
+          "bossName": "双足飞龙",
+          "require": [
+            {
+              "character": "黑骑",
+              "star": 5,
+              "rank": "R9-5"
+            },
+            {
+              "character": "狼",
+              "star": 5,
+              "rank": "R9-5"
+            },
+            {
+              "character": "狗",
+              "star": 5,
+              "rank": "R9-5"
+            },
+            {
+              "character": "充电宝",
+              "star": 3,
+              "rank": "R9-5"
+            },
+            {
+              "character": "tp弓",
+              "star": 4,
+              "rank": "R9-5"
+            }
+          ],
+          "map": [
+            {
+              "time": "1：06",
+              "remark": "auto"
+            },
+            {
+              "time": "1：00",
+              "remark": "取消auto"
+            },
+            {
+              "time": "0：56",
+              "remark": "auto"
+            },
+            {
+              "time": "0：40",
+              "remark": "tp弓三连射后UB"
+            },
+            {
+              "time": "0：20",
+              "remark": "狼吼三闪后UB"
+            },
+            {
+              "time": "0：15",
+              "remark": "狗，tp弓UB"
+            },
+            {
+              "time": "0：02",
+              "remark": "狼，狗，tp弓UB"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
