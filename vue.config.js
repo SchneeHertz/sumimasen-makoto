@@ -1,3 +1,5 @@
+const CompressionPlugin = require('compression-webpack-plugin')
+
 module.exports = {
   chainWebpack: config => {
     config
@@ -10,5 +12,10 @@ module.exports = {
   devServer: {
     proxy: 'http://localhost:8097'
   },
-  productionSourceMap: false
+  productionSourceMap: false,
+  configureWebpack: {
+    plugins: [
+      new CompressionPlugin()
+    ]
+  }
 }
