@@ -1,10 +1,10 @@
 {
   "gameData": [
     {
-      "id": "fsdbucasn",
-      "name": "juxie",
-      "startTime": "2020-07-28",
-      "endTime": "2020-08-02",
+      "id": "fdussdf",
+      "name": "202009处女座",
+      "startTime": "2020-09-22",
+      "endTime": "2020-09-08",
       "bossData": [
         {
           "id": "boss1",
@@ -36,7 +36,7 @@
         },
         {
           "id": "boss3",
-          "name": "兽人头目",
+          "name": "死灵领主",
           "data": [
             {
               "round": "1",
@@ -50,7 +50,7 @@
         },
         {
           "id": "boss4",
-          "name": "独角兽",
+          "name": "独眼巨人",
           "data": [
             {
               "round": "1",
@@ -64,7 +64,7 @@
         },
         {
           "id": "boss5",
-          "name": "巨钳魔蟹",
+          "name": "美杜莎",
           "data": [
             {
               "round": "1",
@@ -78,69 +78,6 @@
         }
       ],
       "bossMap": [
-        {
-          "id": "A1Map1",
-          "name": "轴1",
-          "round": "1",
-          "bossName": "双足飞龙",
-          "require": [
-            {
-              "character": "黑骑",
-              "star": 5,
-              "rank": "R9-5"
-            },
-            {
-              "character": "狼",
-              "star": 5,
-              "rank": "R9-5"
-            },
-            {
-              "character": "狗",
-              "star": 5,
-              "rank": "R9-5"
-            },
-            {
-              "character": "充电宝",
-              "star": 3,
-              "rank": "R9-5"
-            },
-            {
-              "character": "tp弓",
-              "star": 4,
-              "rank": "R9-5"
-            }
-          ],
-          "map": [
-            {
-              "time": "1：06",
-              "remark": "auto"
-            },
-            {
-              "time": "1：00",
-              "remark": "取消auto"
-            },
-            {
-              "time": "0：56",
-              "remark": "auto"
-            },
-            {
-              "time": "0：40",
-              "remark": "tp弓三连射后UB"
-            },
-            {
-              "time": "0：20",
-              "remark": "狼吼三闪后UB"
-            },
-            {
-              "time": "0：15",
-              "remark": "狗，tp弓UB"
-            },
-            {
-              "time": "0：02",
-              "remark": "狼，狗，tp弓UB"
-            }
-          ]
-        }
       ]
     }
   ]
