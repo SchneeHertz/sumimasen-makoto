@@ -287,7 +287,7 @@ export default {
         if (spaceAt != -1) {
           this.dialogData.map.push({
             time: step.slice(0, spaceAt),
-            remark: step.slice(spaceAt, step.length)
+            remark: step.slice(spaceAt + 1, step.length)
           })
         } else {
           this.dialogData.map.push({
